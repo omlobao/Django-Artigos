@@ -20,14 +20,69 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'motorartigos'
+    'motorartigos',
+    'tinymce'
 ]
+
+JAZZMIN_SETTINGS = {
+    # Título da janela do navegador
+    "site_title": "Meu Painel Admin",
+    
+    # Título na tela de login
+    "site_header": "Administração",
+    
+    # Texto de marca d'água/logo no menu lateral
+    "site_brand": "Django Artigos",
+    
+    # Caminho para o logotipo (deve estar nos arquivos static)
+    "site_logo": "images/logo.png",
+    
+    # Mensagem de boas-vindas na tela de login
+    "welcome_sign": "Bem-vindo ao sistema de gerenciamento",
+    
+    # Direitos autorais no rodapé
+    "copyright": "Minha Empresa Ltda",
+    
+    # Campo de busca global para modelos específicos
+    "search_model": ["auth.User", "auth.Group"],
+    
+    # Formato do menu principal (Top navigation ou Sidebar)
+    "topmenu_links": [
+        {"name": "Home",  "url": "admin:index", "permissions": ["auth.view_user"]},
+        {"name": "Suporte", "url": "https://meusuporte.com", "new_window": True},
+    ],
+    
+    # Ícones para as Apps e Modelos (usa Font Awesome)
+    "icons": {
+        "auth": "fas fa-users-cog",
+        "auth.user": "fas fa-user",
+        "auth.Group": "fas fa-users",
+    },
+}
+
+
+TINYMCE_DEFAULT_CONFIG = {
+    'height': 500,
+    'menubar': True,
+    'plugins': [
+        'advlist autolink lists link image charmap preview anchor',
+        'searchreplace visualblocks code fullscreen',
+        'insertdatetime media table paste code wordcount'
+    ],
+    'toolbar': (
+        'undo redo | formatselect | bold italic underline strikethrough | '
+        'alignleft aligncenter alignright alignjustify | '
+        'bullist numlist outdent indent | link image | '
+        'forecolor backcolor | code fullscreen'
+    ),
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
