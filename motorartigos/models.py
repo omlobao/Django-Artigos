@@ -3,7 +3,7 @@ from django.db import models
 class Autor(models.Model):
     nome = models.CharField(max_length = 100)
     biografia = models.TextField()
-    email = models.EmailField()
+    email = models.EmailField()    
 
     def __str__(self) -> str:
         return self.nome 
