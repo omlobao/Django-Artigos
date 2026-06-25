@@ -33,7 +33,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV 'D:\Users\ALUNO\Desktop\Django - Lobão\djangoartigos\venv'
+set -gx VIRTUAL_ENV 'D:\Users\ALUNO\Documents\Django-Artigos-main\Django-Artigos-main\venv'
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/"Scripts $PATH

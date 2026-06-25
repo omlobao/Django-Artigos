@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}Início | DevBlog Django{% endblock %}
+
+{% block content %}
+<main class="container py-4 fade-in">
+  
+  <div class="row align-items-center mb-5 mt-3">
+    <div class="col-lg-8">
+      <h1 class="fw-extrabold display-5 mb-3" style="letter-spacing: -1.5px; font-weight: 800;">
+        Conteúdos que impactam o mercado de <span style="color: var(--primary-accent);">tecnologia</span>.
+      </h1>
+      <p class="text-secondary fs-5" style="max-width: 650px;">
+        Descubra artigos profundos criados por especialistas e líderes de transformação.
+      </p>
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h3 class="section-title">Eixos de Tecnologia</h3>
+  </div>
+  <div class="filter-pills">
+    <a href="?eixo=todos" class="filter-btn active text-decoration-none">Todos os artigos</a>
+    <a href="?eixo=programacao" class="filter-btn text-decoration-none">Programação</a>
+    <a href="?eixo=dados" class="filter-btn text-decoration-none">Data Science</a>
+  </div>
+
+  <div class="d-flex justify-content-between align-items-center mb-4 mt-5">
+    <h3 class="section-title">Todos os Artigos</h3>
+  </div>
+  
+  <div class="row g-4">
+    {% for artigo in artigos %}
+      <div class="col-12 col-md-6 col-lg-4">
+        {% include 'motorartigos/partials/_card_artigo.html' with artigo=artigo %}      </div>
+    {% empty %}
+      <div class="col-12 text-center py-5">
+        <i class="bi bi-inbox-fill text-secondary fs-1 mb-3"></i>
+        <h5 class="text-secondary">Ainda não existem artigos publicados.</h5>
+      </div>
+    {% endfor %}
+  </div>
+
+</main>
+{% endblock %}

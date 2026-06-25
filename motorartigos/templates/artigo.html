@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ artigo.titulo }} | DevBlog{% endblock %}
+
+{% block content %}
+<main class="container py-5 fade-in">
+  <div class="row justify-content-center">
+    <div class="col-lg-9">
+      
+      <a href="{% url 'home' %}" class="btn-back">
+        <i class="bi bi-arrow-left"></i> Voltar ao início
+      </a>
+
+      <div class="detail-header-meta">
+        <span class="detail-axis-badge">{{ artigo.eixo.nome }}</span>
+        
+        {% if artigo.nivel == 'B' %}
+          <span class="badge-level level-b position-static">Básico</span>
+        {% elif artigo.nivel == 'I' %}
+          <span class="badge-level level-i position-static">Intermédio</span>
+        {% else %}
+          <span class="badge-level level-a position-static">Avançado</span>
+        {% endif %}
+
+        <div class="text-secondary d-flex align-items-center gap-2 font-monospace fs-7">
+          <i class="bi bi-calendar-event"></i>
+          <span>Publicado a {{ artigo.data_publicacao|date:"d M Y" }}</span>
+        </div>
+      </div>
+
+      <h1 class="detail-title">{{ artigo.titulo }}</h1>
+
+      <div class="detail-hero-wrapper">
+        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80" alt="Capa do artigo" class="detail-hero-img">
+      </div>
+
+      <article class="detail-content-area text-slate-100">
+        {{ artigo.texto|safe }}
+      </article>
+
+      <div class="author-card-large">
+        <div class="author-avatar-lg">{{ artigo.autor.nome|make_list|first }}</div>
+        <div>
+          <span class="text-secondary text-uppercase font-monospace fw-bold fs-7">Escrito por</span>
+          <h4 class="mt-1 mb-2 fw-bold text-white">{{ artigo.autor.nome }}</h4>
+          <p class="text-secondary mb-2">{{ artigo.autor.biografia }}</p>
+          <a href="mailto:{{ artigo.autor.email }}" class="author-contact-btn">
+            <i class="bi bi-envelope"></i> Contactar Autor
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</main>
+{% endblock %}

@@ -99,7 +99,7 @@ ROOT_URLCONF = 'core.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')], # incluir
+        'DIRS': [BASE_DIR, 'templates'], # incluir
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -169,13 +169,12 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR / 'static',)
+    BASE_DIR / 'static',
 ]
 
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
 
-# --- RESOLUÇÃO DEFINITIVA DJANGO 6 + MARIA DB ANTIGO ---
 from django.db.backends.signals import connection_created
 from django.dispatch import receiver
 
